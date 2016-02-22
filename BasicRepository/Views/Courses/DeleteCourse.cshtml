@@ -1,0 +1,68 @@
+﻿@model BasicRepository.Models.Course
+
+@{
+    ViewBag.Title = "DeleteCourse";
+}
+
+<h2>Delete Course</h2>
+
+<p>You are about to delete the following course. Click <strong>Delete</strong> or <strong>Cancel</strong></p>
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            @Html.Display("Name")
+        </th>
+    </tr>
+    <tr>
+        <th>
+            Address
+        </th>
+        <th>
+            @Html.Display("Address")
+        </th>
+    </tr>
+    <tr>
+        <th>
+            City
+        </th>
+        <th>
+            @Html.Display("City")
+        </th>
+    </tr>
+    <tr>
+        <th>
+            State
+        </th>
+        <th>
+            @Html.Display("State".ToString())
+        </th>
+    </tr>
+    <tr>
+        <th>
+            Zip
+        </th>
+        <th>
+            @Html.Display("Zip")
+        </th>
+    </tr>
+    <tr>
+        <th>
+            Status
+        </th>
+        <th>
+            @Html.Raw((Model.Open) ? "Open" : "Closed")
+        </th>
+    </tr>
+</table>
+
+<form action="/Courses/DeleteCourse" method="post">
+    <input type="hidden" name="id" value="@Model.ID" />
+    <input type="submit" name="operation" value="Delete" class="btn btn-danger" /> 
+    <br />
+    <br />
+    @Html.ActionLink("Back to list", "ShowTable")
+</form>
